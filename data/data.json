@@ -1,0 +1,19 @@
+{
+  "login": {
+    "admin": {
+      "user": "Admin",
+      "password": "admin123"
+    }
+  },
+
+  "candidate": {
+    "user": {
+      "name": "Sally",
+      "middlename": "Anne",
+      "lastname": "Ride",
+      "vacancy": "Senior QA Lead",
+      "email":"sride@test.com" ,
+      "phone":"5550001003"
+    }
+  }
+}
