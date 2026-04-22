@@ -7,7 +7,8 @@ export class CandidateList extends BasePage {
   }
 
   private candidateRow(candidateFullName: string): Locator {
-    return this.page.locator('.oxd-table-row', { hasText: candidateFullName });
+    return this.page.locator('.oxd-table-row', { hasText: candidateFullName })
+    .first();
   }
 
   async expectCandidateListed(candidateFullName: string): Promise<void> {

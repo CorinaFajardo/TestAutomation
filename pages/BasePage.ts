@@ -4,7 +4,7 @@ export abstract class BasePage {
   constructor(protected readonly page: Page) {}
 
   protected async waitForNetworkIdle(): Promise<void> {
-    await this.page.waitForLoadState('networkidle');
+    await this.page.waitForLoadState('load');
   }
 
   protected async waitForPageHeading(name: string): Promise<void> {
