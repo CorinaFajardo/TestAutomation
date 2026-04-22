@@ -36,8 +36,11 @@ test('Schedule an interview', async ({ page, Login, Dashboard, Recruitment, Cand
 
   await Recruitment.clickCandidatesTab(); 
   await CandidateList.expectCandidateListed(candidateFullName);
-await page.pause();
   await CandidateList.clickCandidatesDetails(candidateFullName);
-
+  await CandidateDetails.expectApplicationStage(
+    candidateFullName,
+    testData.candidate.user.vacancy,
+    'Application Initiated'
+  );
   
 });
