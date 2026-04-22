@@ -13,4 +13,10 @@ export class CandidateList extends BasePage {
   async expectCandidateListed(candidateFullName: string): Promise<void> {
     await expect(this.candidateRow(candidateFullName)).toBeVisible();
   }
+
+   async clickCandidatesDetails(candidateFullName: string) {
+    const eyeIcon = this.candidateRow(candidateFullName).locator('i.bi-eye-fill');
+    await expect(eyeIcon).toBeVisible();
+    await eyeIcon.click();
+  }
 }

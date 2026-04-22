@@ -5,7 +5,6 @@ test('Schedule an interview', async ({ page, Login, Dashboard, Recruitment, Cand
 
   await Login.goto();
   await Login.login(testData.login.admin.user, testData.login.admin.password);
-
   await Dashboard.isDashboardVisible();
   await Dashboard.openCandidateToInterview();
 
@@ -23,9 +22,11 @@ test('Schedule an interview', async ({ page, Login, Dashboard, Recruitment, Cand
   await Recruitment.selectApplicationDate();
   await Recruitment.saveCandidate();
 
-  const candidateFullName = [testData.candidate.user.name,testData.candidate.user.middlename,testData.candidate.user.lastname,].filter(Boolean).join(' ');
+  const candidateFullName = [
+    testData.candidate.user.name,testData.candidate.user.middlename,testData.candidate.user.lastname,]
+    .filter(Boolean).join(' ');
 
-  await page.pause();
+ 
 
   await CandidateDetails.expectApplicationStage(
     candidateFullName,
@@ -35,4 +36,8 @@ test('Schedule an interview', async ({ page, Login, Dashboard, Recruitment, Cand
 
   await Recruitment.clickCandidatesTab(); 
   await CandidateList.expectCandidateListed(candidateFullName);
+await page.pause();
+  await CandidateList.clickCandidatesDetails(candidateFullName);
+
+  
 });

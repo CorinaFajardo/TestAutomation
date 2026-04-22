@@ -3,6 +3,7 @@ import moment from 'moment';
 import { BasePage } from './BasePage';
 
 export class RecruitmentPage extends BasePage {
+  
   constructor(page: Page) {
     super(page);
   }
@@ -10,6 +11,8 @@ export class RecruitmentPage extends BasePage {
   private get jobVacancyDropdown() {
     return this.page.locator('.oxd-select-text-input');
   }
+
+
 
   async isRecruitmentPageVisible() {
     await this.waitForPageHeading('Recruitment');
@@ -39,10 +42,19 @@ export class RecruitmentPage extends BasePage {
   }
 
   async selectApplicationDate() {
-    const today = moment().format('YYYY-DD-MM'); 
-    const dateInput = this.page.getByPlaceholder('yyyy-dd-mm');
-    await dateInput.fill(today);
-    await dateInput.blur();
+    
+  const todayDay = moment().date().toString();
+
+  const dateInput = this.page.locator('.oxd-date-input input');
+  await dateInput.click();
+
+  const todayCell = this.page.locator('.oxd-calendar-date', {
+    hasText: todayDay,
+  });
+
+  await todayCell.click();
+
+
   }
 
   async saveCandidate() {
@@ -55,4 +67,6 @@ export class RecruitmentPage extends BasePage {
     await tab.click();
     await this.waitForNetworkIdle(); 
   }
+
+  
 }

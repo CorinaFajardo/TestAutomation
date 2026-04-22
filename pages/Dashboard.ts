@@ -1,7 +1,18 @@
-import { Page, expect } from '@playwright/test';
+import { Page } from '@playwright/test';
 import { BasePage } from './BasePage';
 
 export class DashboardPage extends BasePage {
+
+ 
+  private candidateInterviewItem = this.page.locator(
+    '.orangehrm-todo-list-item',
+    { hasText: /Interview/i }
+  );
+
+  private candidateInterviewButton = this.candidateInterviewItem.locator(
+    'button.orangehrm-report-icon'
+  );
+
   constructor(page: Page) {
     super(page);
   }
@@ -11,6 +22,6 @@ export class DashboardPage extends BasePage {
   }
 
   async openCandidateToInterview() {
-    await this.page.getByText(/Candidate to Interview/).click();
+    await this.candidateInterviewButton.click();
   }
 }
