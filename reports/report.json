@@ -9,7 +9,7 @@
     "globalTimeout": 0,
     "grep": {},
     "grepInvert": null,
-    "maxFailures": 0,
+    "maxFailures": 1,
     "metadata": {
       "actualWorkers": 1
     },
@@ -29,7 +29,7 @@
         "testMatch": [
           "**/*.@(spec|test).?(c|m)[jt]s?(x)"
         ],
-        "timeout": 30000
+        "timeout": 0
       }
     ],
     "quiet": false,
@@ -60,7 +60,7 @@
     "updateSnapshots": "missing",
     "updateSourceMethod": "patch",
     "version": "1.59.1",
-    "workers": 7,
+    "workers": 1,
     "webServer": null
   },
   "suites": [
@@ -72,11 +72,11 @@
       "specs": [
         {
           "title": "Schedule an interview",
-          "ok": true,
+          "ok": false,
           "tags": [],
           "tests": [
             {
-              "timeout": 30000,
+              "timeout": 0,
               "annotations": [],
               "expectedStatus": "passed",
               "projectId": "chromium",
@@ -85,18 +85,53 @@
                 {
                   "workerIndex": 0,
                   "parallelIndex": 0,
-                  "status": "passed",
-                  "duration": 27897,
-                  "errors": [],
+                  "status": "failed",
+                  "duration": 2636866,
+                  "error": {
+                    "message": "Error: locator.click: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - waiting for locator('.orangehrm-todo-list-item').filter({ hasText: /Interview/i }).locator('button.orangehrm-report-icon')\u001b[22m\n\u001b[2m    - locator resolved to <button type=\"button\" data-v-f5c763eb=\"\" data-v-93929af6=\"\" class=\"oxd-icon-button oxd-icon-button--info orangehrm-report-icon\">…</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is visible, enabled and stable\u001b[22m\n\u001b[2m    - scrolling into view if needed\u001b[22m\n\u001b[2m    - done scrolling\u001b[22m\n",
+                    "stack": "Error: locator.click: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - waiting for locator('.orangehrm-todo-list-item').filter({ hasText: /Interview/i }).locator('button.orangehrm-report-icon')\u001b[22m\n\u001b[2m    - locator resolved to <button type=\"button\" data-v-f5c763eb=\"\" data-v-93929af6=\"\" class=\"oxd-icon-button oxd-icon-button--info orangehrm-report-icon\">…</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is visible, enabled and stable\u001b[22m\n\u001b[2m    - scrolling into view if needed\u001b[22m\n\u001b[2m    - done scrolling\u001b[22m\n\n    at DashboardPage.openCandidateToInterview (C:\\Users\\cfajardo\\Desktop\\Test-Automation\\pages\\Dashboard.ts:25:41)\n    at C:\\Users\\cfajardo\\Desktop\\Test-Automation\\tests\\ScheduleInterview.spec.ts:11:19",
+                    "location": {
+                      "file": "C:\\Users\\cfajardo\\Desktop\\Test-Automation\\pages\\Dashboard.ts",
+                      "column": 41,
+                      "line": 25
+                    },
+                    "snippet": "\u001b[90m   at \u001b[39m..\\pages\\Dashboard.ts:25\n\n\u001b[0m \u001b[90m 23 |\u001b[39m\n \u001b[90m 24 |\u001b[39m   \u001b[36masync\u001b[39m openCandidateToInterview() {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 25 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mcandidateInterviewButton\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                         \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 26 |\u001b[39m   }\n \u001b[90m 27 |\u001b[39m }\n \u001b[90m 28 |\u001b[39m\u001b[0m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\cfajardo\\Desktop\\Test-Automation\\pages\\Dashboard.ts",
+                        "column": 41,
+                        "line": 25
+                      },
+                      "message": "Error: locator.click: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - waiting for locator('.orangehrm-todo-list-item').filter({ hasText: /Interview/i }).locator('button.orangehrm-report-icon')\u001b[22m\n\u001b[2m    - locator resolved to <button type=\"button\" data-v-f5c763eb=\"\" data-v-93929af6=\"\" class=\"oxd-icon-button oxd-icon-button--info orangehrm-report-icon\">…</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is visible, enabled and stable\u001b[22m\n\u001b[2m    - scrolling into view if needed\u001b[22m\n\u001b[2m    - done scrolling\u001b[22m\n\n\n\u001b[90m   at \u001b[39m..\\pages\\Dashboard.ts:25\n\n\u001b[0m \u001b[90m 23 |\u001b[39m\n \u001b[90m 24 |\u001b[39m   \u001b[36masync\u001b[39m openCandidateToInterview() {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 25 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mcandidateInterviewButton\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                         \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 26 |\u001b[39m   }\n \u001b[90m 27 |\u001b[39m }\n \u001b[90m 28 |\u001b[39m\u001b[0m\n\u001b[2m    at DashboardPage.openCandidateToInterview (C:\\Users\\cfajardo\\Desktop\\Test-Automation\\pages\\Dashboard.ts:25:41)\u001b[22m\n\u001b[2m    at C:\\Users\\cfajardo\\Desktop\\Test-Automation\\tests\\ScheduleInterview.spec.ts:11:19\u001b[22m"
+                    }
+                  ],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-04-22T20:26:58.940Z",
+                  "startTime": "2026-09-02T18:28:46.131Z",
                   "annotations": [],
-                  "attachments": []
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "C:\\Users\\cfajardo\\Desktop\\Test-Automation\\test-results\\ScheduleInterview-Schedule-an-interview-chromium\\video.webm"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\cfajardo\\Desktop\\Test-Automation\\test-results\\ScheduleInterview-Schedule-an-interview-chromium\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\cfajardo\\Desktop\\Test-Automation\\pages\\Dashboard.ts",
+                    "column": 41,
+                    "line": 25
+                  }
                 }
               ],
-              "status": "expected"
+              "status": "unexpected"
             }
           ],
           "id": "321de837acd217fe06b6-e422596f6e806e2af40c",
@@ -107,13 +142,17 @@
       ]
     }
   ],
-  "errors": [],
+  "errors": [
+    {
+      "message": "\u001b[31mTesting stopped early after 1 maximum allowed failures.\u001b[39m"
+    }
+  ],
   "stats": {
-    "startTime": "2026-04-22T20:26:56.343Z",
-    "duration": 34836.031,
-    "expected": 1,
+    "startTime": "2026-09-02T18:28:43.889Z",
+    "duration": 2643478.533,
+    "expected": 0,
     "skipped": 0,
-    "unexpected": 0,
+    "unexpected": 1,
     "flaky": 0
   }
 }

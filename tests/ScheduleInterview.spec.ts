@@ -1,10 +1,12 @@
 import { test, expect } from '../fixtures/fixtures';
 import testData from '../data/data.json';
 
-test('Schedule an interview', async ({ page, Login, Dashboard, Recruitment, CandidateDetails, CandidateList }) => {
+test('Schedule an interview', async ({ 
+  page, Login, Dashboard, Recruitment, CandidateDetails, CandidateList }) => {
 
   await Login.goto();
   await Login.login(testData.login.admin.user, testData.login.admin.password);
+  await page.pause();
   await Dashboard.isDashboardVisible();
   await Dashboard.openCandidateToInterview();
 
@@ -33,7 +35,7 @@ test('Schedule an interview', async ({ page, Login, Dashboard, Recruitment, Cand
     testData.candidate.user.vacancy,
     'Application Initiated'
   );
-
+  
   await Recruitment.clickCandidatesTab(); 
   await CandidateList.expectCandidateListed(candidateFullName);
   await CandidateList.clickCandidatesDetails(candidateFullName);
